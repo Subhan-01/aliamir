@@ -80,6 +80,8 @@ const marqueeItems = [
   'TRANSPARENT DEALING',
 ]
 
+const assetUrl = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`
+
 function App() {
   const rootRef = useRef<HTMLDivElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -134,7 +136,7 @@ function App() {
         <div className="loader" aria-label="Loading Ali Amir website">
           <div className="loader-inner">
             <p className="loader-kicker">PROPERTY ADVICES BY ALI AMIR</p>
-            <div className="loader-logo-wrap"><img className="loader-logo" src="/assets/ali-amir-urdu-logo.png" alt="Ali Amir Urdu logo" /></div>
+            <div className="loader-logo-wrap"><img className="loader-logo" src={assetUrl('ali-amir-urdu-logo.png')} alt="Ali Amir Urdu logo" /></div>
             <div className="loader-line" />
             <p className="loader-foot">KNOWLEDGE BEFORE INVESTMENT</p>
           </div>
@@ -146,7 +148,7 @@ function App() {
 
       <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
         <a className="brand-lockup" href="#home" onClick={() => scrollTo('#home')} aria-label="Ali Amir home">
-          <span className="brand-logo-frame"><img src="/assets/ali-amir-urdu-logo.png" alt="Ali Amir Urdu logo" /></span>
+          <span className="brand-logo-frame"><img src={assetUrl('ali-amir-urdu-logo.png')} alt="Ali Amir Urdu logo" /></span>
           <span className="brand-wordmark"><strong>ALI AMIR</strong><small>REAL ESTATE ADVISORY</small></span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -186,7 +188,7 @@ function App() {
               <div className="hero-orbit hero-orbit-two" />
               <div className="hero-aa">AA</div>
               <div className="hero-art">
-                <div className="hero-art-frame"><img className="hero-art-image" src="/assets/ali-pic-5.jpg" alt="Ali Amir at his office" /></div>
+                <div className="hero-art-frame"><img className="hero-art-image" src={assetUrl('ali-pic-5.jpg')} alt="Ali Amir at his office" /></div>
                 <div className="hero-art-caption"><span>01</span><span>FOUNDER / ADVISOR</span></div>
               </div>
               <div className="hero-art-label label-one">Real estate<br /><strong>expertise</strong></div>
@@ -207,7 +209,7 @@ function App() {
             <div className="about-heading reveal"><p className="eyebrow">Who is Ali Amir?</p><h2>More than property.<br /><em>A journey built on trust.</em></h2></div>
           </div>
           <div className="section-wrap about-grid">
-            <div className="about-image-wrap reveal"><div className="about-image-frame"><img src="/assets/ali-pic-1.jpg" alt="Ali Amir, real estate consultant" loading="lazy" /></div><span className="image-index">ALI AMIR / 02</span></div>
+            <div className="about-image-wrap reveal"><div className="about-image-frame"><img src={assetUrl('ali-pic-1.jpg')} alt="Ali Amir, real estate consultant" loading="lazy" /></div><span className="image-index">ALI AMIR / 02</span></div>
             <div className="about-copy">
               <p className="large-copy reveal">Ali Amir is a Real Estate Educationalist, Consultant, Advisor, and Influencer with over seven years of experience in the real estate industry.</p>
               <p className="body-copy reveal">His mission is to make property knowledge more accessible, promote transparency, and help people make informed real estate decisions. He works with first-time buyers, investors, overseas Pakistanis, builders, developers, and real estate learners.</p>
@@ -241,7 +243,7 @@ function App() {
 
         <section id="services" className="services section-light">
           <div className="section-wrap services-head"><div className="section-index reveal"><span>03</span><span>WHAT I DO</span></div><div className="services-title reveal"><p className="eyebrow">Professional guidance</p><h2>Informed<br /><em>decisions.</em></h2></div><p className="services-note reveal">From understanding the market to making the move, every service starts with clarity.</p></div>
-          <div className="section-wrap service-list">{serviceItems.map(({ number, title, body, icon: Icon }) => <div className="service-row reveal" key={title}><span className="service-number">{number}</span><div className="service-content"><h3>{title}</h3><p>{body}</p></div><div className="service-icon"><Icon size={22} strokeWidth={1.4} /></div><div className="service-hover-image"><img src="/assets/ali-pic-5.jpg" alt="" loading="lazy" /></div></div>)}</div>
+          <div className="section-wrap service-list">{serviceItems.map(({ number, title, body, icon: Icon }) => <div className="service-row reveal" key={title}><span className="service-number">{number}</span><div className="service-content"><h3>{title}</h3><p>{body}</p></div><div className="service-icon"><Icon size={22} strokeWidth={1.4} /></div><div className="service-hover-image"><img src={assetUrl('ali-pic-5.jpg')} alt="" loading="lazy" /></div></div>)}</div>
           <div className="section-wrap services-foot reveal"><span>Guidance should come before profit.</span><a className="button button-dark" href="#contact">Talk to Ali Amir <MoveUpRight size={16} /></a></div>
         </section>
 
@@ -251,13 +253,13 @@ function App() {
         </section>
 
         <section className="statement-section section-dark">
-          <div className="statement-image"><img src="/assets/ali-pic-5.jpg" alt="Ali Amir in his office" loading="lazy" /></div>
+          <div className="statement-image"><img src={assetUrl('ali-pic-5.jpg')} alt="Ali Amir in his office" loading="lazy" /></div>
           <div className="statement-overlay" />
           <div className="section-wrap statement-content"><p className="eyebrow reveal"><span className="eyebrow-dot" /> A point of view</p><h2 className="reveal">Real estate is not just about <em>property.</em><br />It's about people, decisions <br />&amp; <em>trust.</em></h2><div className="statement-foot reveal"><span>05 / BRAND STATEMENT</span><span className="statement-rule" /><span>ALI AMIR</span></div></div>
         </section>
 
         <section className="property-section section-light">
-          <div className="section-wrap property-grid"><div className="property-copy"><div className="section-index reveal"><span>06</span><span>THE BUSINESS</span></div><p className="eyebrow reveal">Property Advices by Ali Amir</p><h2 className="reveal">A professional firm<br />for <em>clearer moves.</em></h2><p className="large-copy dark reveal">Real estate marketing and advisory for people who value correct information, ethical promotion, and long-term trust.</p><div className="property-points reveal"><span>Real estate marketing</span><span>Advisory services</span><span>Project promotion</span><span>Client guidance</span></div><a className="text-link reveal" href="#contact">Explore Property Advices <ArrowUpRight size={16} /></a></div><div className="property-panel reveal"><div className="panel-visual"><img src="/assets/ali-pic-1.jpg" alt="Property Advices by Ali Amir" loading="lazy" /><div className="panel-stamp">PA<br /><span>BY ALI AMIR</span></div></div><div className="panel-bottom"><span>Guidance before profit</span><ArrowUpRight size={18} /></div></div></div>
+          <div className="section-wrap property-grid"><div className="property-copy"><div className="section-index reveal"><span>06</span><span>THE BUSINESS</span></div><p className="eyebrow reveal">Property Advices by Ali Amir</p><h2 className="reveal">A professional firm<br />for <em>clearer moves.</em></h2><p className="large-copy dark reveal">Real estate marketing and advisory for people who value correct information, ethical promotion, and long-term trust.</p><div className="property-points reveal"><span>Real estate marketing</span><span>Advisory services</span><span>Project promotion</span><span>Client guidance</span></div><a className="text-link reveal" href="#contact">Explore Property Advices <ArrowUpRight size={16} /></a></div><div className="property-panel reveal"><div className="panel-visual"><img src={assetUrl('ali-pic-1.jpg')} alt="Property Advices by Ali Amir" loading="lazy" /><div className="panel-stamp">PA<br /><span>BY ALI AMIR</span></div></div><div className="panel-bottom"><span>Guidance before profit</span><ArrowUpRight size={18} /></div></div></div>
         </section>
 
         <section id="projects" className="projects section-dark">
