@@ -133,7 +133,27 @@ export function useAliAmirMotion(rootRef: RefObject<HTMLElement | null>) {
     const pointer = (event: PointerEvent) => {
       root.style.setProperty('--pointer-x', `${event.clientX}px`)
       root.style.setProperty('--pointer-y', `${event.clientY}px`)
+      root.style.setProperty('--cursor-x', `${event.clientX}px`)
+      root.style.setProperty('--cursor-y', `${event.clientY}px`)
     }
+
+    const interactiveSelector = 'a, button, input, textarea, select, [role="button"], .magnetic'
+    const cursorHover = (event: PointerEvent) => {
+      const current = event.target instanceof Element ? event.target.closest(interactiveSelector) : null
+      if (event.type === 'pointerover') {
+        if (current) root.classList.add('cursor-hover')
+        return
+      }
+
+      const related = event.relatedTarget
+      if (related instanceof Node && current?.contains(related)) return
+      const next = related instanceof Element ? related.closest(interactiveSelector) : null
+      root.classList.toggle('cursor-hover', Boolean(next))
+    }
+    const cursorPress = (event: PointerEvent) => {
+      if (event.isPrimary && event.button === 0) root.classList.add('cursor-pressed')
+    }
+    const cursorRelease = () => root.classList.remove('cursor-pressed')
 
     const applyMagneticMotion = (element: HTMLElement) => {
       const move = (event: PointerEvent) => {
@@ -164,12 +184,24 @@ export function useAliAmirMotion(rootRef: RefObject<HTMLElement | null>) {
 
     const supportsFinePointer = window.matchMedia('(pointer: fine)').matches
     if (supportsFinePointer) {
+      root.classList.add('has-custom-cursor')
       window.addEventListener('pointermove', pointer, { passive: true })
+      root.addEventListener('pointerover', cursorHover)
+      root.addEventListener('pointerout', cursorHover)
+      root.addEventListener('pointerdown', cursorPress)
+      window.addEventListener('pointerup', cursorRelease)
+      window.addEventListener('pointercancel', cursorRelease)
       const magneticElements = Array.from(root.querySelectorAll<HTMLElement>('.magnetic'))
       const magneticCleanup = magneticElements.map(applyMagneticMotion)
 
       return () => {
+        root.classList.remove('has-custom-cursor', 'cursor-hover')
         window.removeEventListener('pointermove', pointer)
+        root.removeEventListener('pointerover', cursorHover)
+        root.removeEventListener('pointerout', cursorHover)
+        root.removeEventListener('pointerdown', cursorPress)
+        window.removeEventListener('pointerup', cursorRelease)
+        window.removeEventListener('pointercancel', cursorRelease)
         magneticCleanup.forEach((cleanup) => cleanup())
         mm.revert()
       }

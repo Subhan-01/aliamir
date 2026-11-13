@@ -145,6 +145,8 @@ function App() {
 
       <div className="scroll-progress" aria-hidden="true" />
       <div className="pointer-glow" aria-hidden="true" />
+      <div className="custom-cursor-ring" aria-hidden="true" />
+      <div className="custom-cursor-dot" aria-hidden="true" />
 
       <header className={`site-nav ${scrolled ? 'is-scrolled' : ''}`}>
         <a className="brand-lockup" href="#home" onClick={() => scrollTo('#home')} aria-label="Ali Amir home">
