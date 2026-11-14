@@ -1,5 +1,28 @@
 {
   "routes": [
-    { "path": "/", "title": "Ali Amir — Real Estate Educationalist & Advisor" }
+    {
+      "path": "/",
+      "title": "Ali Amir | Real Estate Educationalist & Advisor — Pakistan"
+    },
+    {
+      "path": "/about",
+      "title": "About Ali Amir | Real Estate Consultant & Influencer Pakistan"
+    },
+    {
+      "path": "/services",
+      "title": "Services | Property Advices by Ali Amir — Real Estate Marketing & Advisory"
+    },
+    {
+      "path": "/property-management",
+      "title": "Property Management by Ali Amir | Construction, Renovation & Maintenance Pakistan"
+    },
+    {
+      "path": "/vision",
+      "title": "Vision & Mission | Ali Amir — Building a Trusted Real Estate Ecosystem in Pakistan"
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Ali Amir | Free Real Estate Consultation Pakistan"
+    }
   ]
 }
